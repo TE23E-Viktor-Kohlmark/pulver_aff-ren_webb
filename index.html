@@ -13,24 +13,40 @@
 
         <div class="header">
 
-            <div class="menu">
-                <ul>
-                    <li><a href="index.html">Info</a></li>
-                    <li><a href="about.html">Butiker</a></li>
-                    <li><a href="services.html">Kontakta oss</a></li>
-                </ul>
-            </div>
             <h1 id="title">Pulver affären</h1>
-            <div class="search">
-                <input type="text" placeholder="Sök">
-                <button type="submit">Sök</button>
+            <hr>
+            <div id="search-basket-container">
+                <div id="search">
+                    <input type="text" placeholder="Sök">
+                    <button type="submit">Sök</button>
+                </div>
+                <div id="basket">
+                    <img src="images/basket.png" alt="basket">
+                </div>
+                <div class="menuIcon">
+                    <img src="img/menu-svgrepo-com.svg" alt="menu">
+                </div>
             </div>
-            <div class="basket">
-                <img src="images/basket.png" alt="basket">
-            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Info</a></li>
+                <li><a href="about.html">Butiker</a></li>
+                <li><a href="services.html">Kontakta oss</a></li>
+            </ul>
         </div>
 
     </div>
+    <script>
+                function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>
