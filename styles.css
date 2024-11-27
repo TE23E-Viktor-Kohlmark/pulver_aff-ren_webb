@@ -1,13 +1,27 @@
 :root {
+    
+    /* colors */
     --background-color: #f0f0f0;
     --primary-red: #B54141;
     --secoundary-red: #883838;
     --primary-white: #f0f0f0;
     --primary-black: #333;
-
+    
+    --primary-grey: #646464;
+    --secoundary-grey: #D9D9D9;
+    --buy-red: #F55454; 
+    --buy-white: #f0f0f0;
+    --populer-yellow: #FFE632;
+    
+    /* font-size */ 
+    --phoneTitle-size: 30px;
+    --phone-product-title: 20px;
+    --phone-product-buy: 15px;
+    --phone-product-price: 10px;
+    
 }
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
@@ -34,6 +48,7 @@ body {
 #title {
     margin: 0;
     padding: 0;
+    font-style: extra-bold;
     text-align: center;
     
 }
@@ -86,14 +101,104 @@ body {
     margin: 0;
     display: flex;
 }
-.menu ul li {
+.menu  li {
     margin: 0 15px;
 }
-.menu ul li a {
+.menu  li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
 }
-.menu ul li a:hover {
+.menu  li a:hover {
     color: #007BFF;
+}
+
+
+/* ================ Shop ================ */
+
+.shop {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 320px);
+    gap:20px;    
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+@media (min-width: 800px) {
+    .shop {
+        grid-template-columns: repeat(2, 330px);
+        width: 320px;
+    }
+}
+@media (min-width: 1440px) {
+    .shop {
+        grid-template-columns: repeat(3, 330px);
+        width: 320px;
+    }
+}
+
+
+.item {
+    background-color: var(--primary-grey);
+}
+.item img {
+    margin: 15px;
+    height: 110px;
+    
+}
+   
+.details {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+/* Can use the class text to make it in to a row therfore the image and details can co-exist */
+/* Fix the margin so the title is center */
+.details h3 {
+    font-size: var(--phone-product-title);
+    color: var(--primary-black);
+    background-color: var(--secoundary-grey);
+
+    text-align: center;
+    
+    width: 143px; 
+    height: 26px;
+
+    margin-top: 0;
+    /* Dose not reach the top of the img and is under it buy a sizeble amount */
+}
+
+
+.price-buy p {
+    font-size: var(--phone-product-price);
+    color: var(--buy-white);
+    font-style: extra-bold;
+    
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10 auto ;
+    /* width: calc(74px - 51.91px/2px) calc(74px - 51.91px/2px);  */
+
+}
+
+.price-buy button {
+
+    background-color: var(--buy-red);
+    color: var(--primary-white);
+
+    border: none;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    width: 74px;
+    height: 26px;
 }
