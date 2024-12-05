@@ -18,6 +18,9 @@
     --phone-product-title: 20px;
     --phone-product-buy: 15px;
     --phone-product-price: 10px;
+
+    /* Font size */
+    
     
 }
 body {
@@ -201,4 +204,12 @@ body {
 
     width: 74px;
     height: 26px;
+} 
+
+.price-buy button:hover {
+    background-color: #f0f0f0;
+    color: var(--buy-red);
+    
+    scale: 1.05;
+    cursor: pointer;
 }
