@@ -92,12 +92,19 @@ body {
 
 /* ================ Menu ================ */
 
-.menu {
-    display: flex ;
+
+#menu {
+    display: none; 
+
+}
+
+#menu:focus-within > #menu {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    display: flex;
 }
+
 .menu ul {
     list-style-type: none;
     padding: 0;
