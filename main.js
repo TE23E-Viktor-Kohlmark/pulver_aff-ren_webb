@@ -98,9 +98,9 @@ let increment = (id) => {
         localStorage.setItem("data", JSON.stringify(basket));
     }
     update(id);
-    generateCartItems();
     calculation();
 };
+
 let decrement = (id) => {
     let selectedItem = basket.find((x) => x.id === id);
    
@@ -113,7 +113,6 @@ let decrement = (id) => {
 
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
-    generateCartItems();
     calculation();
 
 };
