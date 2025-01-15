@@ -57,7 +57,7 @@ let generateCartItems = () => {
                 <div class="title">
                     <div class="cartName">
                         <h3>${search.name}</h3>
-                        <i class="bi bi-x-lg"></i>
+                        <i class="bi bi-x-lg" onclick="removeItem('${id}')"></i>
                     </div>    
                     <div class="buttons">
                         <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
@@ -70,6 +70,7 @@ let generateCartItems = () => {
         }).join("");
     } else {
         console.log("Cart is empty");
+        cartOut.innerHTML = "";
         label.innerHTML = `
             <h2>Varukorgen är tom</h2>
             <button class="CloseCart">Stäng</button>
@@ -95,12 +96,11 @@ let increment = (id) => {
         }
         update(selectedItem.id);
         localStorage.setItem("data", JSON.stringify(basket));
-
     }
-    update();
-    
+    update(id);
+    generateCartItems();
+    calculation();
 };
-
 let decrement = (id) => {
     let selectedItem = basket.find((x) => x.id === id);
    
@@ -112,38 +112,34 @@ let decrement = (id) => {
     }
 
     localStorage.setItem("data", JSON.stringify(basket));
-    update();
+    update(id);
+    generateCartItems();
+    calculation();
+
 };
+
 
 let update = (id) => {
     let search = basket.find((x) => x.id === id);
-    if (search) {
-        let element = document.getElementById(id);
-        if (element) {
-            element.innerHTML = search.item;
-        } 
-    } else {
-        let element = document.getElementById(id);
-        if (element) {
-            element.innerHTML = 0;
-        }
+    let element = document.getElementById(id);
+    if (element) {
+        element.innerHTML = search ? search.item : 0;
     }
     generateCartItems();
     calculation();
+
 };
 
 let calculation = () => {
     let carticon = document.getElementById('cartAmount');
     if (carticon) {
-        carticon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
-    } else if (basket.item === 1) {
-        localStorage.setItem("data", JSON.stringify(basket));
+        let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+        carticon.innerHTML = totalItems;
+        generateCartItems(basket);
     }
-    else {
-    }
-
 };
-calculation();
+calculation();  
+
 // // ======== ======== Button ======== ======== 
 
 // document.getElementById('menuButton').addEventListener('click', function () {
