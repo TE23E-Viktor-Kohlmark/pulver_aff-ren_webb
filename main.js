@@ -1,14 +1,16 @@
+
+// ======== ======== Shop ======== ========
 let shop = document.getElementById('shop');
 
 let shopItemsData = [
     {
-        id: "asdasd",
+        id: "LIM",
         name: "Lim",
         price: 100,
         img: "img/E85.png"
     },
     {
-        id: "asdasasdd",
+        id: "TROD",
         name: "T-röd",
         price: 100,
         img: "img/T-sprit.png"
@@ -39,6 +41,44 @@ function generateShop() {
 }
 
 generateShop();
+// ======== ======== Cart ======== ========
+
+let label = document.getElementById('label');
+
+let cartOut = document.getElementById('cartOut');
+let generateCartItems = () => {
+    if (basket.length !== 0) {
+        cartOut.innerHTML = basket.map((x) => {
+            let { id, item } = x;
+            let search = shopItemsData.find((y) => y.id === id) || [];
+            return `
+            <div class="cartItem">
+                <img src="${search.img}" alt="">
+                <div class="title">
+                    <div class="cartName">
+                        <h3>${search.name}</h3>
+                        <i class="bi bi-x-lg"></i>
+                    </div>    
+                    <div class="buttons">
+                        <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
+                        <div id="${id}" class="amount">${item}</div>
+                        <i onclick="increment('${id}')" class="bi bi-plus-lg"></i>
+                    </div>
+                </div>
+            </div>
+            `;
+        }).join("");
+    } else {
+        console.log("Cart is empty");
+        label.innerHTML = `
+            <h2>Varukorgen är tom</h2>
+            <button class="CloseCart">Stäng</button>
+        `;
+    }
+}
+generateCartItems();
+
+// ======== ======== Functions ======== ========
 
 let increment = (id) => {
     let selectedItem = shopItemsData.find((x) => x.id === id);
@@ -53,36 +93,64 @@ let increment = (id) => {
         } else {
             search.item++;
         }
-        localStorage.setItem("data", JSON.stringify(basket));
-        console.log(basket);
         update(selectedItem.id);
-    } 
+        localStorage.setItem("data", JSON.stringify(basket));
+
+    }
+    update();
+    
 };
 
-let dncrement = () => { };
-let update = (id) => { 
+let decrement = (id) => {
+    let selectedItem = basket.find((x) => x.id === id);
+   
+    if (selectedItem === undefined || selectedItem.item === 0) return;
+    
+    selectedItem.item--;
+    if (selectedItem.item === 0) {
+        basket = basket.filter((x) => x.id !== id);
+    }
+
+    localStorage.setItem("data", JSON.stringify(basket));
+    update();
+};
+
+let update = (id) => {
     let search = basket.find((x) => x.id === id);
-    console.log(search.item);
-    console.log("update is running");
+    if (search) {
+        let element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = search.item;
+        } 
+    } else {
+        let element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = 0;
+        }
+    }
+    generateCartItems();
     calculation();
 };
 
 let calculation = () => {
     let carticon = document.getElementById('cartAmount');
-    carticon = document.getElementById('cartAmount');
-    console.log(basket.map((x) => x.item).reduce((x, y) => x + y, 0));
-};
-
-calculation();
-
-// ======== ======== Button ======== ======== 
-
-document.getElementById('menuButton').addEventListener('click', function() {
-    var menu = document.getElementById('menu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'flex';
-    } else {
-        menu.style.display = 'none';
+    if (carticon) {
+        carticon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+    } else if (basket.item === 1) {
+        localStorage.setItem("data", JSON.stringify(basket));
     }
-});
+    else {
+    }
 
+};
+calculation();
+// // ======== ======== Button ======== ======== 
+
+// document.getElementById('menuButton').addEventListener('click', function () {
+//     var menu = document.getElementById('menu');
+//     if (menu.style.display === 'none' || menu.style.display === '') {
+//         menu.style.display = 'flex';
+//     } else {
+//         menu.style.display = 'none';
+//     }
+// });
