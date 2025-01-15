@@ -50,29 +50,29 @@ let generateCartItems = () => {
     if (basket.length !== 0) {
         cartOut.innerHTML = basket.map((x) => {
             let { id, item } = x;
-            let search = shopItemsData.find((x) => x.id === id) || [];
+            let search = shopItemsData.find((y) => y.id === id) || [];
             return `
-        <div class="cartItem">
-            <img src="${search.img}" alt="">
-            <div class="title">
-                <div class="cartName">
-                    <h3>${search.name}</h3>
-                    <i class="bi bi-x-lg"></i>
-                </div>    
-                <div class="buttons">
-                <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-                <div id=${id} class="amount">${item}</div>
-                <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
+            <div class="cartItem">
+                <img src="${search.img}" alt="">
+                <div class="title">
+                    <div class="cartName">
+                        <h3>${search.name}</h3>
+                        <i class="bi bi-x-lg"></i>
+                    </div>    
+                    <div class="buttons">
+                        <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
+                        <div id="${id}" class="amount">${item}</div>
+                        <i onclick="increment('${id}')" class="bi bi-plus-lg"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        `
+            `;
         }).join("");
     } else {
         console.log("Cart is empty");
         label.innerHTML = `
-                <h2>Varukorgen är tom</h2>
-                <button class="CloseCart">Stäng</button>
+            <h2>Varukorgen är tom</h2>
+            <button class="CloseCart">Stäng</button>
         `;
     }
 }
@@ -81,55 +81,76 @@ generateCartItems();
 // ======== ======== Functions ======== ========
 
 let increment = (id) => {
-    let selectedItem = id;
-    let search = basket.find((x) => x.id === selectedItem.id);
+    let selectedItem = shopItemsData.find((x) => x.id === id);
 
-    if (search === undefined) {
-        basket.push({ id: selectedItem.id, item: 1 });  
-    }else {
-        search.item++;
+    if (selectedItem) {
+        let search = basket.find((x) => x.id === selectedItem.id);
+        if (search === undefined) {
+            basket.push({
+                id: selectedItem.id,
+                item: 1,
+            });
+        } else {
+            search.item++;
+        }
+        update(selectedItem.id);
+        localStorage.setItem("data", JSON.stringify(basket));
+
     }
-    update(selectedItem.id);
-    localStorage.setItem("data", JSON.stringify(basket));
+    update();
+    
 };
 
-let decrement = () => {
-    let selectedItem = id;
-    let search = basket.find((x) => x.id === selectedItem.id);
+let decrement = (id) => {
+    let selectedItem = basket.find((x) => x.id === id);
    
-    if (search == undefined) return;
-    else if (search.item === 0) return;
-    else {
-        search.item--;
+    if (selectedItem === undefined || selectedItem.item === 0) return;
+    
+    selectedItem.item--;
+    if (selectedItem.item === 0) {
+        basket = basket.filter((x) => x.id !== id);
     }
-    basket = basket.filter((x) => x.item !== 0);
 
-    update(selectedItem.id);
     localStorage.setItem("data", JSON.stringify(basket));
+    update();
 };
 
 let update = (id) => {
     let search = basket.find((x) => x.id === id);
-    console.log(search.item);
-    console.log("update is running");
+    if (search) {
+        let element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = search.item;
+        } 
+    } else {
+        let element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = 0;
+        }
+    }
+    generateCartItems();
     calculation();
 };
 
 let calculation = () => {
     let carticon = document.getElementById('cartAmount');
-    carticon = document.getElementById('cartAmount');
-    console.log(basket.map((x) => x.item).reduce((x, y) => x + y, 0));
-};
-
-calculation();
-// ======== ======== Button ======== ======== 
-
-document.getElementById('menuButton').addEventListener('click', function () {
-    var menu = document.getElementById('menu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'flex';
-    } else {
-        menu.style.display = 'none';
+    if (carticon) {
+        carticon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+    } else if (basket.item === 1) {
+        localStorage.setItem("data", JSON.stringify(basket));
     }
-});
+    else {
+    }
 
+};
+calculation();
+// // ======== ======== Button ======== ======== 
+
+// document.getElementById('menuButton').addEventListener('click', function () {
+//     var menu = document.getElementById('menu');
+//     if (menu.style.display === 'none' || menu.style.display === '') {
+//         menu.style.display = 'flex';
+//     } else {
+//         menu.style.display = 'none';
+//     }
+// });
