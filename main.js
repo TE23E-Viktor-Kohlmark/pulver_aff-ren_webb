@@ -144,7 +144,18 @@ let calculation = () => {
 };
 calculation();  
 
+function CartHide() {
+    var x = document.getElementById("cart");
+    if (x.style.display === "none" || x.style.display === "") {
+        x.style.display = "flex";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 // // ======== ======== Button ======== ======== 
+
+
 
 // document.getElementById('menuButton').addEventListener('click', function () {
 //     var menu = document.getElementById('menu');

@@ -25,12 +25,12 @@
                     <input type="text" placeholder="Sök">
                     <button type="submit">Sök</button>
                 </div>
-                <div id="basket">
-                    <a href="/cart.html"><i class="bi bi-cart"></i></a>
-                </div>
+                <button onclick="CartHide()" id="basket">
+                    <i class="bi bi-cart" "></i>
+                </button>
                 <div class="menuIcon">
                     <button id="menuButton">
-                        <i id="menuIcon" class="bi bi-list"></i>
+                        <i class="bi bi-list"></i>
                     </button>
                 </div>
             </div>
@@ -45,11 +45,11 @@
         <div class="shop" id="shop"></div>
     </div>
     </div>
-    <div class="cart">
+    <div class="cart" id="cart">
 
         <div class="cartTitle">
             <h2>Varukorg</h2>
-            <button id="hideCart">
+            <button  onclick="CartHide()">
                 <i class="bi bi-arrow-90deg-right"></i>
             </button>
         </div>
