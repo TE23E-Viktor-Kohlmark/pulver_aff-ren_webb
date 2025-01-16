@@ -289,3 +289,9 @@ text-align: center;
     font-weight: bold;
     cursor: pointer;
 }
+
+.bi-x-lg {
+    color: var(--primary-red);
+    font-weight: bold;
+    cursor: pointer;
+}

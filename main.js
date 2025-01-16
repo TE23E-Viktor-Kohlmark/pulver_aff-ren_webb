@@ -57,7 +57,7 @@ let generateCartItems = () => {
                 <div class="title">
                     <div class="cartName">
                         <h3>${search.name}</h3>
-                        <i class="bi bi-x-lg" onclick="removeItem('${id}')"></i>
+                        <i onclick="removeItem('${id}')" class="bi bi-x-lg"></i>
                     </div>    
                     <div class="buttons">
                         <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
@@ -98,7 +98,6 @@ let increment = (id) => {
         localStorage.setItem("data", JSON.stringify(basket));
     }
     update(id);
-    calculation();
 };
 
 let decrement = (id) => {
@@ -113,7 +112,6 @@ let decrement = (id) => {
 
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
-    calculation();
 
 };
 
@@ -129,6 +127,11 @@ let update = (id) => {
 
 };
 
+let removeItem = (id) => {
+    basket = basket.filter((x) => x.id !== id);
+    localStorage.setItem("data", JSON.stringify(basket));
+    update(id);
+}
 let calculation = () => {
     let carticon = document.getElementById('cartAmount');
     if (carticon) {
@@ -136,6 +139,7 @@ let calculation = () => {
         carticon.innerHTML = totalItems;
         generateCartItems(basket);
     }
+
 };
 calculation();  
 
