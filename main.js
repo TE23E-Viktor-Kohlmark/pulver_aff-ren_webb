@@ -132,6 +132,7 @@ let removeItem = (id) => {
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
 }
+
 let calculation = () => {
     let carticon = document.getElementById('cartAmount');
     if (carticon) {
