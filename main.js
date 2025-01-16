@@ -7,13 +7,13 @@ let shopItemsData = [
         id: "LIM",
         name: "Lim",
         price: 100,
-        img: "img/E85.png"
+        img: "img/E85.webp"
     },
     {
         id: "TROD",
         name: "T-röd",
         price: 100,
-        img: "img/T-sprit.png"
+        img: "img/T-sprit.webp"
     },
 ];
 
@@ -73,7 +73,6 @@ let generateCartItems = () => {
         cartOut.innerHTML = "";
         label.innerHTML = `
             <h2>Varukorgen är tom</h2>
-            <button class="CloseCart">Stäng</button>
         `;
     }
 }
