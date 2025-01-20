@@ -1,4 +1,3 @@
-
 // ======== ======== Shop ======== ========
 let shop = document.getElementById('shop');
 
@@ -15,11 +14,35 @@ let shopItemsData = [
         price: 100,
         img: "img/T-sprit.webp"
     },
+    {
+        id: "SEA",
+        name: "Sea",
+        price: 100,
+        img: "img/Sea.webp"
+    },
+    {
+        id: "GLUE2",
+        name: "Glue2",
+        price: 100,
+        img: "img/glue2.webp"
+    },
+    {
+        id: "GLUE",
+        name: "Glue",
+        price: 100,
+        img: "img/glue.webp"
+    },
+    {
+        id: "SWEAT",
+        name: "Sweat",
+        price: 100,
+        img: "img/sweat.webp"
+    }
 ];
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
-// Make in to a function insted of a var 
+// Main page
 function generateShop() {
     shop.innerHTML = shopItemsData.map((x) => {
         let search = basket.find((x) => x.id === x.id) || [];
@@ -45,10 +68,10 @@ generateShop();
 
 let label = document.getElementById('label');
 
-let cartOut = document.getElementById('cartOut');
-let generateCartItems = () => {
+let cartItems = document.getElementById('cartItems'); // Corrected ID
+function generateCartItems() {
     if (basket.length !== 0) {
-        cartOut.innerHTML = basket.map((x) => {
+        cartItems.innerHTML = basket.map((x) => {
             let { id, item } = x;
             let search = shopItemsData.find((y) => y.id === id) || [];
             return `
@@ -70,7 +93,6 @@ let generateCartItems = () => {
         }).join("");
     } else {
         console.log("Cart is empty");
-        cartOut.innerHTML = "";
         label.innerHTML = `
             <h2>Varukorgen är tom</h2>
         `;
@@ -78,6 +100,20 @@ let generateCartItems = () => {
 }
 generateCartItems();
 
+let price = document.getElementById('totalPrice')
+function totalPrice() {
+    if (basket.length > 0) {
+        let total = basket.reduce((sum, item) => {
+            let product = shopItemsData.find((y) => y.id === item.id);
+            return sum + (product.price * item.item);
+        }, 0);
+        price.innerHTML = `Total Price: $${total.toFixed(2)}`;
+    } else {
+        price.innerHTML = `Total Price: $0.00`;
+    }
+}
+
+totalPrice();
 // ======== ======== Functions ======== ========
 
 let increment = (id) => {
@@ -97,13 +133,15 @@ let increment = (id) => {
         localStorage.setItem("data", JSON.stringify(basket));
     }
     update(id);
+    totalPrice();
+    calculation();
 };
 
 let decrement = (id) => {
     let selectedItem = basket.find((x) => x.id === id);
-   
+
     if (selectedItem === undefined || selectedItem.item === 0) return;
-    
+
     selectedItem.item--;
     if (selectedItem.item === 0) {
         basket = basket.filter((x) => x.id !== id);
@@ -111,9 +149,9 @@ let decrement = (id) => {
 
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
-
+    totalPrice();
+    calculation();
 };
-
 
 let update = (id) => {
     let search = basket.find((x) => x.id === id);
@@ -123,13 +161,13 @@ let update = (id) => {
     }
     generateCartItems();
     calculation();
-
 };
 
 let removeItem = (id) => {
     basket = basket.filter((x) => x.id !== id);
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
+    TotalPrice();
 }
 
 let calculation = () => {
@@ -137,11 +175,8 @@ let calculation = () => {
     if (carticon) {
         let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
         carticon.innerHTML = totalItems;
-        generateCartItems(basket);
     }
-
 };
-calculation();  
 
 function CartHide() {
     var x = document.getElementById("cart");
@@ -151,16 +186,3 @@ function CartHide() {
         x.style.display = "none";
     }
 }
-
-// // ======== ======== Button ======== ======== 
-
-
-
-// document.getElementById('menuButton').addEventListener('click', function () {
-//     var menu = document.getElementById('menu');
-//     if (menu.style.display === 'none' || menu.style.display === '') {
-//         menu.style.display = 'flex';
-//     } else {
-//         menu.style.display = 'none';
-//     }
-// });

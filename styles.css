@@ -274,7 +274,7 @@ Button {
     color: #B54141;
     font-size: 30px;
     cursor: pointer;
-    
+
 }
 
 .cartItem img {
@@ -337,4 +337,19 @@ Button {
     color: var(--primary-red);
     font-weight: bold;
     cursor: pointer;
+}
+
+/* ================ TotalPriceStyle ================ */
+.totalPrice {
+    background-color: var(--buy-white);
+    border: 2px solid var(--primary-black);
+    border-radius: 5px;
+
+    width: 320px;
+    padding: 5px 0;
+    margin-top: 20px;
+}
+
+.totalPrice h3 {
+    margin: 10px;
 }
