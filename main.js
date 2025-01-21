@@ -91,14 +91,14 @@ function generateCartItems() {
             </div>
             `;
         }).join("");
-    } else {
+    } else{
         console.log("Cart is empty");
-        label.innerHTML = `
-            <h2>Varukorgen är tom</h2>
-        `;
+        cartItems.innerHTML = "";
+        CartHide();
     }
 }
-generateCartItems();
+
+// ======== ======== Functions ======== ========
 
 let price = document.getElementById('totalPrice')
 function totalPrice() {
@@ -107,14 +107,11 @@ function totalPrice() {
             let product = shopItemsData.find((y) => y.id === item.id);
             return sum + (product.price * item.item);
         }, 0);
-        price.innerHTML = `Total Price: $${total.toFixed(2)}`;
+        price.innerHTML = `<h3>Total Price: $${total.toFixed(2)}</h3>`;
     } else {
-        price.innerHTML = `Total Price: $0.00`;
+        price.innerHTML = `<h3>Total Price: $0.00</h3>`;
     }
 }
-
-totalPrice();
-// ======== ======== Functions ======== ========
 
 let increment = (id) => {
     let selectedItem = shopItemsData.find((x) => x.id === id);
@@ -133,8 +130,6 @@ let increment = (id) => {
         localStorage.setItem("data", JSON.stringify(basket));
     }
     update(id);
-    totalPrice();
-    calculation();
 };
 
 let decrement = (id) => {
@@ -147,10 +142,7 @@ let decrement = (id) => {
         basket = basket.filter((x) => x.id !== id);
     }
 
-    localStorage.setItem("data", JSON.stringify(basket));
     update(id);
-    totalPrice();
-    calculation();
 };
 
 let update = (id) => {
@@ -159,15 +151,14 @@ let update = (id) => {
     if (element) {
         element.innerHTML = search ? search.item : 0;
     }
-    generateCartItems();
     calculation();
+    totalPrice();
+    generateCartItems();
 };
 
 let removeItem = (id) => {
     basket = basket.filter((x) => x.id !== id);
-    localStorage.setItem("data", JSON.stringify(basket));
     update(id);
-    TotalPrice();
 }
 
 let calculation = () => {
@@ -178,6 +169,7 @@ let calculation = () => {
     }
 };
 
+// ========= Button =========
 function CartHide() {
     var x = document.getElementById("cart");
     if (x.style.display === "none" || x.style.display === "") {
