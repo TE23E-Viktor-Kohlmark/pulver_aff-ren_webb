@@ -53,7 +53,7 @@ function generateShop() {
                     <div class="text">
                         <h3>${x.name}</h3>
                         <div class="price-buy">
-                            <button onclick="increment('${x.id}')"> Köp</button>
+                            <button onclick="increment('${x.id}')"><h2> Köp nu</h2></button>
                             <p>Pris : ${x.price}</p>
                         </div>                    
                     </div> 

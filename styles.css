@@ -150,46 +150,6 @@ Button {
     margin-top: 20px;
 }
 
-@media (min-width: 820px) {
-    .shop {
-        grid-template-columns: repeat(2, 330px);
-        height: 330px;
-
-    }
-    .item img {
-        height: 220px;
-        width: 220px;   
-    }
-    .details  {
-        width: 330px;
-        height: 330px;
-        flex-direction: column;
-    }
-    .text {
-        display: flex;
-    }
-    .details h3  {
-        background-color: var(--primary-grey-grey-grey);
-        color: redq ;   
-    }
-    .price-buy {
-        margin-top: 20px;
-        
-    }
-    .price-buy P {
-        margin-top: 30px;
-    }
-
-}
-
-@media (min-width: 1920px) {
-    .shop {
-        grid-template-columns: repeat(3, 330px);
-        width: 320px;
-    }
-}
-
-
 .item {
     background-color: var(--primary-grey);
 }
@@ -372,5 +332,66 @@ Button {
 }
 
 .totalPrice h3 {
-    margin: 10px;   
+    margin: 10px;
+}
+
+@media (min-width: 820px) {
+    .shop {
+        grid-template-columns: repeat(2, 330px);
+        height: 330px;
+    }
+
+    .item img {
+        height: 220px;
+        width: 220px;
+    }
+
+    .details {
+        width: 330px;
+        height: 330px;
+        flex-direction: column;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        width: 210px;
+    }
+    
+    .text h3 {
+        background-color: var(--primary-grey);
+        font-size: 30px;
+        text-align: left;
+        margin: 0;
+    }
+
+    .price-buy {
+        display: flex;
+
+    }
+
+    .price-buy button {
+        order: 2;
+        padding: 20px 50px;
+        width: 120px;
+        margin-top: -10px;
+        margin-right: -20px;
+
+    }
+    .price-buy buttons p {
+        font-size: 20px;
+        width: 140px;
+    }
+    .price-buy p {
+        order: 1;
+        font-size: 20px;
+    }
+
+}
+
+@media (min-width: 1920px) {
+    .shop {
+        grid-template-columns: repeat(3, 330px);
+        width: 320px;
+    }
 }
