@@ -19,9 +19,6 @@
     --phone-product-buy: 15px;
     --phone-product-price: 10px;
 
-    /* Font size */
-
-
 }
 
 body {
@@ -29,6 +26,11 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+}
+
+Button {
+    background: none;
+    border: none;
 }
 
 a {
@@ -61,11 +63,13 @@ a {
     color: #fff;
 }
 
-#search-basket-container {
+.search-basket-container {
     display: flex;
+    width: 80%;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 10px;
+    margin: 0 auto;
 }
 
 .bi-cart {
@@ -79,11 +83,11 @@ a {
     color: #f0f0f0;
 }
 
-#search {
+.search {
     display: flex;
 }
 
-#search input[type="text"] {
+.search input[type="text"] {
     width: 30vw;
     height: 3vh;
     border: 1px solid #333;
@@ -91,6 +95,12 @@ a {
     padding: 3px;
 }
 
+.search button {
+    font-size: 20px;
+    padding: 0 6px;
+    background-color: var(--secoundary-red);
+
+}
 
 .menuIcon i {
     color: #333;
@@ -105,17 +115,13 @@ a {
 
 /* ================ Menu ================ */
 
-#menu {
+.menu {
     display: none;
     justify-content: center;
     margin-top: 10px;
     display: flex;
 }
 
-Button {
-    background: none;
-    border: none;
-}
 
 .menu ul {
     list-style-type: none;
@@ -214,6 +220,10 @@ Button {
 
     width: 74px;
     height: 26px;
+}
+
+.price-buy h2 {
+    font-size: 15px;
 }
 
 .price-buy button:hover {
@@ -357,7 +367,7 @@ Button {
         flex-direction: column;
         width: 210px;
     }
-    
+
     .text h3 {
         background-color: var(--primary-grey);
         font-size: 30px;
@@ -372,16 +382,18 @@ Button {
 
     .price-buy button {
         order: 2;
-        padding: 20px 50px;
+        padding: 23px 50px;
         width: 120px;
         margin-top: -10px;
         margin-right: -20px;
 
     }
+
     .price-buy buttons p {
         font-size: 20px;
-        width: 140px;
+        width: 130px;
     }
+
     .price-buy p {
         order: 1;
         font-size: 20px;
@@ -389,7 +401,17 @@ Button {
 
 }
 
-@media (min-width: 1980px) {
+@media (min-width: 1200px) {
+    .header {
+        display: flex;
+    }
+
+    .header hr {
+        display: none;
+    }
+
+    
+
     .shop {
         grid-template-columns: repeat(3, 400px);
         height: 400px;
@@ -400,10 +422,15 @@ Button {
         height: 400px;
         padding: 0;
     }
+
     .item img {
         height: 280px;
         width: 250px;
         align-items: center;
     }
 
+    .price-buy button h2 {
+        font-size: 20px;
+        min-width: 80px;
+    }
 }
