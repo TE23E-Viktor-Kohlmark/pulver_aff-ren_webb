@@ -389,9 +389,21 @@ Button {
 
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1980px) {
     .shop {
-        grid-template-columns: repeat(3, 330px);
-        width: 320px;
+        grid-template-columns: repeat(3, 400px);
+        height: 400px;
     }
+
+    .details {
+        width: 400px;
+        height: 400px;
+        padding: 0;
+    }
+    .item img {
+        height: 280px;
+        width: 250px;
+        align-items: center;
+    }
+
 }
