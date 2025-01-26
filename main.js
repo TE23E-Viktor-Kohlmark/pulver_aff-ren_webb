@@ -54,7 +54,7 @@ function generateShop() {
                         <h3>${x.name}</h3>
                         <div class="price-buy">
                             <button onclick="increment('${x.id}')"><h2> Köp nu</h2></button>
-                            <p>Pris : ${x.price}</p>
+                            <p>${x.price} kr</p>
                         </div>                    
                     </div> 
                 </div>
@@ -158,6 +158,7 @@ let update = (id) => {
 
 let removeItem = (id) => {
     basket = basket.filter((x) => x.id !== id);
+    localStorage.setItem("data", JSON.stringify(basket));
     update(id);
 }
 
@@ -166,9 +167,12 @@ let calculation = () => {
     if (carticon) {
         let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
         carticon.innerHTML = totalItems;
+        localStorage.setItem("data", JSON.stringify(basket));
+
     }
 };
 
+update();
 // ========= Button =========
 function CartHide() {
     var x = document.getElementById("cart");
