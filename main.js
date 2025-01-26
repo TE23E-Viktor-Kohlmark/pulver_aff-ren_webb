@@ -94,7 +94,6 @@ function generateCartItems() {
     } else{
         console.log("Cart is empty");
         cartItems.innerHTML = "";
-        CartHide();
     }
 }
 
