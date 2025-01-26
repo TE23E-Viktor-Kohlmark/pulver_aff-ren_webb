@@ -22,20 +22,20 @@
         <div class="header">
             <h1 id="title">Pulver affären</h1>
             <hr>
-            <div class="search-basket-container">
                 <div class="search">
                     <input type="text" placeholder="Sök">
                     <button type="submit"><i class="bi bi-search"></i></button>
                 </div>
-                <button onclick="CartHide()" id="basket">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <div class=" menuIcon">
+                <div class="cartIcon">
+                    <button onclick="CartHide()" id="basket">
+                        <i class="bi bi-cart"></i>
+                    </button>
+                </div>
+                <div class="menuIcon">
                         <button id="menuButton" onclick="MenuHide()">
                             <i class="bi bi-list"></i>
-                        </button>
-                </div>
-            </div>
+                </button>
+            
         </div>
     </div>
     <div class="menu" id="menu">
@@ -63,6 +63,17 @@
         <div id="cartItems" class="cartOut"></div>
         <div id="totalPrice" class="totalPrice"></div>
 
+    </div>
+    
+    <div class="footer">
+        <div class="signup">
+            <h2>Sign up for our newsletter</h2>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Sign Up</button>
+        </div>
+        <div class ="copyRight">
+            <p>&copy; 2021 Pulveraffären</p>
+        </div>
     </div>
 
 </body>
