@@ -546,6 +546,7 @@ a {
     .header {
         display: flex;
         justify-content: space-between;
+        height: 100%
     }
 
     .header hr {
@@ -554,13 +555,12 @@ a {
 
     .title {
         order: 2;
-        font-size: 1.7em;
+        font-size: 1em;
     }
-
 
     .menuIcon {
         order: 1;
-        font-size: 1.5em;
+        font-size: 1em;
         margin: auto 0;
     }
 
