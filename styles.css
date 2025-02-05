@@ -120,7 +120,7 @@ Button {
 
 }
 
-.bi-list :hover {
+.bi-list:hover {
     color: var(--primary-white);
     cursor: pointer;
 }
@@ -254,7 +254,7 @@ Button {
     width: 10%;
     margin: 0.5em 0;
     text-align: center;
-    z-index: 2;
+    min-width: 66px;
 }
 
 .details {
@@ -434,11 +434,15 @@ Button {
         font-size: 30px;
         margin: 0 40px;
     }
-
+    .cartIcon i {
+        font-size: 3em;
+    }
     .shop {
         grid-template-columns: repeat(2, 33%);
     }
-
+    .item {
+        min-height: 310px;
+    }
     .item img {
         min-width: 220px;
         width: 60%;
@@ -526,6 +530,7 @@ Button {
     .title {
         order: 2;
         font-size: 1em;
+        margin: auto 0;
     }
 
     .menuIcon {
