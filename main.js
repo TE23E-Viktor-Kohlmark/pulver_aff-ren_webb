@@ -7,14 +7,14 @@ let shopItemsData = [
         name: "Lim",
         price: 100,
         img: "img/E85.webp",
-        popular: false,
+        popular: true,
     },
     {
         id: "TROD",
         name: "T-röd",
         price: 100,
         img: "img/T-sprit.webp",
-        popular: true
+        popular: false
     },
     {
         id: "SEA",
@@ -42,7 +42,7 @@ let shopItemsData = [
         name: "Sweat",
         price: 100,
         img: "img/sweat.webp",
-        popular: true
+        popular: false
     }
 ];
 
@@ -55,6 +55,7 @@ function generateShop() {
         return `
             <div class="item">
                 ${x.popular ? '<div class="popular-tag">Popular</div>' : ''}
+                <div class="popular-tag">Popular</div>
                 <div class="details">
                     <img src="${x.img}" alt="">
                     <div class="text">
@@ -75,35 +76,6 @@ generateShop();
 
 let label = document.getElementById('label');
 
-function generateCartItems() {
-    let cartItems = document.getElementById('cartItems'); // Corrected ID
-    if (basket.length !== 0) {
-        cartItems.innerHTML = basket.map((x) => {
-            let { id, item } = x;
-            let search = shopItemsData.find((y) => y.id === id) || [];
-            return `
-            <div class="cartItem">
-                <img src="${search.img}" alt="">
-                <div class="title">
-                    <div class="cartName">
-                        <h3>${search.name}</h3>
-                        <i onclick="removeItem('${id}')" class="bi bi-x-lg"></i>
-                    </div>    
-                    <div class="buttons">
-                        <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
-                        <div id="${id}" class="amount">${item}</div>
-                        <i onclick="increment('${id}')" class="bi bi-plus-lg"></i>
-                    </div>
-                </div>
-            </div>
-            `;
-        }).join("");
-    } else {
-        console.log("Cart is empty");
-        cartItems.innerHTML = "";
-    }
-}
-
 function searchItems() {
     let searchInput = document.getElementById('searchInput').value.toLowerCase();
     let filteredItems = shopItemsData.filter(item => item.name.toLowerCase().includes(searchInput));
@@ -116,6 +88,7 @@ function displayShopItems(items) {
         let search = basket.find((y) => y.id === x.id) || [];
         return `
             <div class="item">
+            ${x.popular ? '<div class="popular-tag">Popular</div>' : ''}
                 <div class="details">
                     <img src="${x.img}" alt="">
                     <div class="text">
