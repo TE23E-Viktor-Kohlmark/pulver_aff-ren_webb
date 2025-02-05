@@ -27,21 +27,21 @@ let shopItemsData = [
         id: "GLUE2",
         name: "Glue2",
         price: 100,
-        img: "img/glue2.webp",
+        img: "img/Glue2.webp",
         popular: false
     },
     {
         id: "GLUE",
         name: "Glue",
         price: 100,
-        img: "img/glue.webp",
+        img: "img/Glue.webp",
         popular: false
     },
     {
         id: "SWEAT",
         name: "Sweat",
         price: 100,
-        img: "img/sweat.webp",
+        img: "img/Sweat.webp",
         popular: false
     }
 ];
