@@ -112,7 +112,7 @@ function totalPrice() {
     }
 }
 
-let increment = (id) => {
+function increment(id) {
     let selectedItem = shopItemsData.find((x) => x.id === id);
 
     if (selectedItem) {
@@ -129,9 +129,9 @@ let increment = (id) => {
         localStorage.setItem("data", JSON.stringify(basket));
     }
     update(id);
-};
+}
 
-let decrement = (id) => {
+function decrement(id) {
     let selectedItem = basket.find((x) => x.id === id);
 
     if (selectedItem === undefined || selectedItem.item === 0) return;
@@ -142,9 +142,9 @@ let decrement = (id) => {
     }
 
     update(id);
-};
+}
 
-let update = (id) => {
+function update(id) {
     let search = basket.find((x) => x.id === id);
     let element = document.getElementById(id);
     if (element) {
@@ -153,23 +153,22 @@ let update = (id) => {
     calculation();
     totalPrice();
     generateCartItems();
-};
+}
 
-let removeItem = (id) => {
+function removeItem(id) {
     basket = basket.filter((x) => x.id !== id);
     localStorage.setItem("data", JSON.stringify(basket));
     update(id);
 }
 
-let calculation = () => {
+function calculation() {
     let carticon = document.getElementById('cartAmount');
     if (carticon) {
         let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
         carticon.innerHTML = totalItems;
         localStorage.setItem("data", JSON.stringify(basket));
-
     }
-};
+}
 
 update();
 // ========= Button =========

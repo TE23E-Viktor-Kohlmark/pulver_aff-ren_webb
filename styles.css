@@ -147,6 +147,7 @@ a {
 .menu {
     display: none;
     justify-content: center;
+    background-color: #fff;
 
     background-color: var(--secoundary-grey);
 
