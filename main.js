@@ -6,37 +6,43 @@ let shopItemsData = [
         id: "LIM",
         name: "Lim",
         price: 100,
-        img: "img/E85.webp"
+        img: "img/E85.webp",
+        popular: false,
     },
     {
         id: "TROD",
         name: "T-röd",
         price: 100,
-        img: "img/T-sprit.webp"
+        img: "img/T-sprit.webp",
+        popular: true
     },
     {
         id: "SEA",
         name: "Sea",
         price: 100,
-        img: "img/Sea.webp"
+        img: "img/Sea.webp",
+        popular: false
     },
     {
         id: "GLUE2",
         name: "Glue2",
         price: 100,
-        img: "img/glue2.webp"
+        img: "img/glue2.webp",
+        popular: false
     },
     {
         id: "GLUE",
         name: "Glue",
         price: 100,
-        img: "img/glue.webp"
+        img: "img/glue.webp",
+        popular: false
     },
     {
         id: "SWEAT",
         name: "Sweat",
         price: 100,
-        img: "img/sweat.webp"
+        img: "img/sweat.webp",
+        popular: true
     }
 ];
 
@@ -45,18 +51,19 @@ let basket = JSON.parse(localStorage.getItem("data")) || [];
 // Main page
 function generateShop() {
     shop.innerHTML = shopItemsData.map((x) => {
-        let search = basket.find((x) => x.id === x.id) || [];
+        let search = basket.find((y) => y.id === x.id) || [];
         return `
             <div class="item">
+                ${x.popular ? '<div class="popular-tag">Popular</div>' : ''}
                 <div class="details">
                     <img src="${x.img}" alt="">
                     <div class="text">
                         <h3>${x.name}</h3>
                         <div class="price-buy">
-                            <button onclick="increment('${x.id}')"><h2> Köp nu</h2></button>
-                            <p>${x.price} kr</p>
-                        </div>                    
-                    </div> 
+                            <button onclick="increment('${x.id}')">Köp</button>
+                            <p>Pris: ${x.price}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
@@ -68,8 +75,8 @@ generateShop();
 
 let label = document.getElementById('label');
 
-let cartItems = document.getElementById('cartItems'); // Corrected ID
 function generateCartItems() {
+    let cartItems = document.getElementById('cartItems'); // Corrected ID
     if (basket.length !== 0) {
         cartItems.innerHTML = basket.map((x) => {
             let { id, item } = x;
@@ -91,11 +98,41 @@ function generateCartItems() {
             </div>
             `;
         }).join("");
-    } else{
+    } else {
         console.log("Cart is empty");
         cartItems.innerHTML = "";
     }
 }
+
+function searchItems() {
+    let searchInput = document.getElementById('searchInput').value.toLowerCase();
+    let filteredItems = shopItemsData.filter(item => item.name.toLowerCase().includes(searchInput));
+    displayShopItems(filteredItems);
+}
+
+function displayShopItems(items) {
+    let shop = document.getElementById('shop');
+    shop.innerHTML = items.map((x) => {
+        let search = basket.find((y) => y.id === x.id) || [];
+        return `
+            <div class="item">
+                <div class="details">
+                    <img src="${x.img}" alt="">
+                    <div class="text">
+                        <h3>${x.name}</h3>
+                        <div class="price-buy">
+                            <button onclick="increment('${x.id}')">Köp</button>
+                            <p>Pris: ${x.price}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+// Call displayShopItems initially to display all items
+displayShopItems(shopItemsData);
 
 // ======== ======== Functions ======== ========
 

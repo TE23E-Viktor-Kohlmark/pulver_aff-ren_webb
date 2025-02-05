@@ -127,7 +127,6 @@ Button {
 
 .search {
     display: flex;
-
     margin: auto;
     width: 70%;
     height: 70%;
@@ -225,6 +224,7 @@ Button {
 
 /* ================ Shop ================ */
 
+
 .shop {
     display: grid;
     justify-content: center;
@@ -241,6 +241,18 @@ Button {
 .item img {
     aspect-ratio: 1;
     width: 30%;
+}
+
+.popular-tag {
+    background-color: var(--populer-yellow);
+    color: var(--primary-black);
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 5px;
+    margin: 0.5em 0;
+    text-align: center;
+    z-index: 2;
 }
 
 .details {

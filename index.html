@@ -26,9 +26,10 @@
                 <div class="title"><h1>Pulver affären</h1></div>
                 <hr>
                 <div class="search">
-                    <input type="text" placeholder="Sök">
+                    <input type="text" id="searchInput" placeholder="Sök" oninput="searchItems()">
                     <button type="submit" aria-label="Search"><i
-                            class="bi bi-search"></i></button>
+                            class="bi bi-search"></i>
+                    </button>
                 </div>
                 <div class="cartIcon" aria-label="Toggle cart">
                     <button onclick="CartHide()" id="basket"
