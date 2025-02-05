@@ -32,16 +32,12 @@ Button {
     background: none;
     border: none;
 }
-
-a {
-    text-decoration: none;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-
-.MainContainer {
-    width: 100%;
-    margin: 0 auto;
-}
 
 /* ================ Header ================ */
 
@@ -119,7 +115,7 @@ a {
     grid-area: item3;
 
     color: #333;
-    font-size: 3em;
+    font-size: 4em;
     font-weight: 900;
 
 }
@@ -148,8 +144,6 @@ a {
     font-size: 1em;
     background-color: var(--secoundary-red);
 }
-
-
 
 /* ================ Menu ================ */
 
@@ -183,15 +177,12 @@ a {
 /* ================ Footer ================ */
 .footer {
     position: relative;
-    bottom: 0;
-
     background-color: var(--primary-red);
     color: #fff;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    margin-top: auto;
 }
 
 .signup h2 {
@@ -208,7 +199,6 @@ a {
     background-color: transparent;
     color: var(--primary-white);
     border: 1px solid var(--buy-white);
-
     border-radius: 3px;
 }
 
@@ -218,16 +208,12 @@ a {
 
 .signup button {
     width: 120px;
-
     background-color: #3B71CA;
     color: var(--buy-white);
     border: none;
-
     padding: 5px 10px;
     margin: 10px auto;
-
     border-radius: 5px;
-
     cursor: pointer;
 }
 
@@ -245,7 +231,6 @@ a {
     grid-template-columns: repeat(1, 80%);
     gap: 2em;
     margin: 2em auto;
-
 }
 
 .item {
@@ -274,50 +259,33 @@ a {
     font-size: var(--phone-product-title);
     color: var(--primary-black);
     background-color: var(--secoundary-grey);
-
     text-align: center;
-
     margin-top: 0;
     /* Dose not reach the top of the img and is under it buy a sizeble amount */
 }
-
 
 .price-buy p {
     font-size: var(--phone-product-price);
     color: var(--buy-white);
     font-style: extra-bold;
-
     font-weight: 500;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 1em auto;
-
     width: 30%;
-
-    /* width: calc(74px - 51.91px/2px) calc(74px - 51.91px/2px);  */
-
 }
 
 .price-buy button {
-
     background-color: var(--buy-red);
     color: var(--primary-white);
-
     border: none;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 0 auto;
-
-
     width: 40%;
     height: 2em;
-
 }
 
 .price-buy h2 {
@@ -327,9 +295,7 @@ a {
 .price-buy button:hover {
     background-color: #f0f0f0;
     color: var(--buy-red);
-
     cursor: pointer;
-
     border-radius: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -360,9 +326,7 @@ a {
     color: #B54141;
     font-size: 30px;
     cursor: pointer;
-
 }
-
 
 .cartItem img {
     width: 100px;
@@ -420,14 +384,12 @@ a {
     font-weight: bold;
     cursor: pointer;
     font-size: 20px;
-
 }
 
 .bi-plus-lg {
     font-weight: bold;
     cursor: pointer;
     font-size: 20px;
-
 }
 
 .bi-x-lg {
@@ -435,7 +397,6 @@ a {
     font-weight: bold;
     cursor: pointer;
     font-size: 10px;
-
 }
 
 /* ================ TotalPriceStyle ================ */
@@ -443,7 +404,6 @@ a {
     background-color: var(--buy-white);
     border: 2px solid var(--primary-black);
     border-radius: 5px;
-
     width: 320px;
     padding: 5px 0;
     margin-top: 1em;
@@ -452,8 +412,6 @@ a {
 .totalPrice h3 {
     margin: 0.8em;
 }
-
-
 
 /* ================ Media Queries ================ */
 
@@ -466,7 +424,6 @@ a {
     .shop {
         grid-template-columns: repeat(2, 33%);
     }
-
 
     .item img {
         min-width: 220px;
@@ -482,12 +439,9 @@ a {
     .text {
         display: flex;
         flex-direction: column;
-
         min-height: 60px;
-
         height: 7vh;
         width: 80%;
-
         margin-top: 1em;
     }
 
@@ -536,7 +490,7 @@ a {
     }
 
     .signup button {
-        height: 8vh;
+        height: 3vh;
         min-width: 100px;
         width: 6vw;
         font-size: 1.2em
@@ -547,7 +501,8 @@ a {
     .header {
         display: flex;
         justify-content: space-between;
-        height: 100%
+        height: 100%;
+        max-height: 100px;
     }
 
     .header hr {
@@ -561,7 +516,6 @@ a {
 
     .menuIcon {
         order: 1;
-        font-size: 1em;
         margin: auto 0;
     }
 
@@ -569,7 +523,6 @@ a {
         order: 3;
         width: 30%;
         margin: auto 0;
-
     }
 
     .search input[type="text"] {
@@ -603,11 +556,7 @@ a {
     }
 
     .price-buy button h2 {
-        font-size: 20px;
+        font-size: 1em;
         min-width: 80px;
-    }
-
-    .signup button {
-        height: 6vh;
     }
 }

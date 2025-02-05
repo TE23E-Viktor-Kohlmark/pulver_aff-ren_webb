@@ -1,82 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet">
 
-    <title>Pulveraffären</title>
-    <meta name="description" content="Pulveraffären - Din butik för alla pulverprodukter.">
-    <meta name="keywords" content="pulver, affär, butikk, produkter, shopping">
-</head>
+        <title>Pulveraffären</title>
+        <meta name="description"
+            content="Pulveraffären - Din butik för alla pulverprodukter.">
+        <meta name="keywords"
+            content="pulver, affär, butikk, produkter, shopping">
+    </head>
 
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="title"><h1 >Pulver affären</h1></div>
-            <hr>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="title"><h1>Pulver affären</h1></div>
+                <hr>
                 <div class="search">
-                    <input type="text" placeholder="Sök" >
-                    <button type="submit" aria-label="Search"><i class="bi bi-search"></i></button>
+                    <input type="text" placeholder="Sök">
+                    <button type="submit" aria-label="Search"><i
+                            class="bi bi-search"></i></button>
                 </div>
                 <div class="cartIcon" aria-label="Toggle cart">
-                    <button onclick="CartHide()" id="basket"aria-label="Toggle cart hide">
+                    <button onclick="CartHide()" id="basket"
+                        aria-label="Toggle cart hide">
                         <i class="bi bi-cart"></i>
                     </button>
                 </div>
                 <div class="menuIcon">
-                        <button id="menuButton" onclick="MenuHide()" aria-label="Toggle menu"></button>
-                            <i class="bi bi-list"></i>
+                    <button id="menuButton" onclick="MenuHide()"
+                        aria-label="Toggle menu">
+                        <i class="bi bi-list"></i>
+                    </button>
                 </button>
-            
-        </div>
-    </div>
-    <div class="menu" id="menu">
-        <ul>
-            <li><a href="index.html">Info</a></li>
-            <li><a href="about.html">Butiker</a></li>
-            <li><a href="services.html">Kontakta oss</a></li>
-        </ul>
-    </div>
-    <div class="shop" id="shop"></div>
-    </div>
-    </div>
-    <div class="cart" id="cart">
+            </div>
 
-        <div class="cartTitle">
-            <h2>Varukorg</h2>
-            <button onclick="CartHide()">
-                <i class="bi bi-arrow-90deg-right"></i>
-            </button>
         </div>
-        <div id="label" class="cartTitle">
-            <div id="cartTotal" class="ShoppPrice"></div>
+        <div class="menu" id="menu">
+            <ul>
+                <li><a href="index.html">Info</a></li>
+                <li><a href="about.html">Butiker</a></li>
+                <li><a href="services.html">Kontakta oss</a></li>
+            </ul>
+        </div>
+        <div class="shop" id="shop"></div>
+        <div class="cart" id="cart">
+
+            <div class="cartTitle">
+                <h2>Varukorg</h2>
+                <button onclick="CartHide()">
+                    <i class="bi bi-arrow-90deg-right"></i>
+                </button>
+            </div>
+            <div id="label" class="cartTitle">
+                <div id="cartTotal" class="ShoppPrice"></div>
+            </div>
+
+            <div id="cartItems" class="cartOut"></div>
+            <div id="totalPrice" class="totalPrice"></div>
+
         </div>
 
-        <div id="cartItems" class="cartOut"></div>
-        <div id="totalPrice" class="totalPrice"></div>
-
-    </div>
-    
-    <div class="footer">
-        <div class="signup">
-            <h2>Sign up for our newsletter</h2>
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Sign Up</button>
+        <div class="footer">
+            <div class="signup">
+                <h2>Sign up for our newsletter</h2>
+                <input type="email" name="email" placeholder="Enter your email"
+                    required>
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="copyRight">
+                <p>&copy; 2021 Pulveraffären</p>
+            </div>
         </div>
-        <div class ="copyRight">
-            <p>&copy; 2021 Pulveraffären</p>
-        </div>
-    </div>
-
-</body>
-<script src="main.js"></script>
+    </body>
+    <script src="main.js"></script>
 
 </html>
