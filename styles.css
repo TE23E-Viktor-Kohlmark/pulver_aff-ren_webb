@@ -37,9 +37,6 @@ a {
     text-decoration: none;
 }
 
-.container {
-    height: 100vh;
-}
 
 .MainContainer {
     width: 100%;
@@ -68,9 +65,12 @@ a {
     border: 3px solid var(--secoundary-red);
 }
 
-#title {
-    /* Position */
+.title {
     grid-area: title;
+}
+
+.title h1 {
+    /* Position */
     padding: 0;
 
     /* Font style */
@@ -82,17 +82,21 @@ a {
 .cartIcon {
     /* Position */
     grid-area: item2;
-    margin: auto;
+    margin: auto 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .cartIcon i {
     font-size: 2em;
     font-weight: 700;
+
 }
 
 .bi-cart {
     color: #333;
     cursor: pointer;
+
 }
 
 .bi-cart:hover {
@@ -102,7 +106,12 @@ a {
 .menuIcon {
     /* Position */
     grid-area: item3;
-    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: auto 20px;
 }
 
 .bi-list {
@@ -113,7 +122,6 @@ a {
     font-size: 3em;
     font-weight: 900;
 
-    margin: auto;
 }
 
 .bi-list :hover {
@@ -125,7 +133,7 @@ a {
     display: flex;
 
     margin: auto;
-    width: 40%;
+    width: 70%;
     height: 70%;
 }
 
@@ -133,6 +141,7 @@ a {
     border: 1px solid #333;
     border-radius: 3px;
     padding: 0.5em;
+    width: 100%;
 }
 
 .search button {
@@ -171,6 +180,62 @@ a {
     color: #007BFF;
 }
 
+/* ================ Footer ================ */
+.footer {
+    position: relative;
+    bottom: 0;
+
+    background-color: var(--primary-red);
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.signup h2 {
+    font-size: 1em;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+}
+
+.signup input {
+    background-color: transparent;
+    color: var(--primary-white);
+    border: 1px solid var(--buy-white);
+
+    border-radius: 3px;
+}
+
+.signup ::placeholder {
+    color: var(--primary-white);
+}
+
+.signup button {
+    width: 120px;
+
+    background-color: #3B71CA;
+    color: var(--buy-white);
+    border: none;
+
+    padding: 5px 10px;
+    margin: 10px auto;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.copyRight {
+    background-color: var(--secoundary-red);
+    width: 100%;
+    text-align: center;
+}
 
 /* ================ Shop ================ */
 
@@ -293,21 +358,22 @@ a {
 
 .bi-arrow-90deg-right {
     color: #B54141;
-    font-size: 2em;
+    font-size: 30px;
     cursor: pointer;
 
 }
 
 
 .cartItem img {
-    width: 6.25em;
-    padding: 0.3em;
+    width: 100px;
+    aspect-ratio: 1/1;
+    padding: 5px;
 }
 
 .cartOut {
     display: grid;
     grid-template-columns: repeat(1, 320px);
-    gap: 1em;
+    gap: 15px;
 }
 
 .cartItem {
@@ -321,44 +387,55 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 20px;
+    width: 190px;
 }
 
 .bi-x-lg {
     color: var(--primary-red);
     font-weight: bold;
     cursor: pointer;
-    margin-left: 9em;
+    margin-left: 10px;
+}
+.cartName i {
+    font-size: 20px;
 }
 
 /* Style for button in cart */
 
 .buttons {
     display: flex;
-    margin-top: 0.7em;
-    gap: 0.5em;
+    gap: 5px;
 }
 
 .amount {
-    padding: 0.1em 0.5em;
+    padding: 1px;
     border-radius: 5px;
     border: 1px solid var(--primary-black);
+    font-size: 20px;
 }
 
 .bi-dash-lg {
     color: var(--primary-red);
     font-weight: bold;
     cursor: pointer;
+    font-size: 20px;
+
 }
 
 .bi-plus-lg {
     font-weight: bold;
     cursor: pointer;
+    font-size: 20px;
+
 }
 
 .bi-x-lg {
     color: var(--primary-red);
     font-weight: bold;
     cursor: pointer;
+    font-size: 10px;
+
 }
 
 /* ================ TotalPriceStyle ================ */
@@ -370,66 +447,12 @@ a {
     width: 320px;
     padding: 5px 0;
     margin-top: 1em;
-}
+}   
 
 .totalPrice h3 {
     margin: 0.8em;
 }
 
-/* ================ Footer ================ */
-.footer {
-    background-color: var(--primary-red);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-.signup h2 {
-    font-size: 1em;
-}
-
-.signup {
-    display: flex;
-    flex-direction: column;
-    max-width: 60%;
-}
-
-.signup input {
-    background-color: transparent;
-    color: var(--primary-white);
-    border: 1px solid var(--buy-white);
-
-    border-radius: 3px;
-}
-
-.signup ::placeholder {
-    color: var(--primary-white);
-}
-
-.signup button {
-    width: 120px;
-
-    background-color: #3B71CA;
-    color: var(--buy-white);
-    border: none;
-
-    padding: 5px 10px;
-    margin: 10px auto;
-
-    border-radius: 5px;
-
-    cursor: pointer;
-}
-
-.copyRight {
-    background-color: var(--secoundary-red);
-    width: 100%;
-    text-align: center;
-}
 
 
 /* ================ Media Queries ================ */
@@ -444,7 +467,7 @@ a {
         grid-template-columns: repeat(2, 33%);
     }
 
-  
+
     .item img {
         min-width: 220px;
         width: 60%;
@@ -461,9 +484,9 @@ a {
         flex-direction: column;
 
         min-height: 60px;
-        
-        height:7vh;
-        width: 60%;
+
+        height: 7vh;
+        width: 80%;
 
         margin-top: 1em;
     }
@@ -491,8 +514,6 @@ a {
         font-size: 20px;
         margin: 0;
         min-width: 60px;
-
-
     }
 
     .signup {
@@ -515,36 +536,42 @@ a {
     }
 
     .signup button {
-        height: 3vh;
+        height: 8vh;
         min-width: 100px;
         width: 6vw;
         font-size: 1.2em
     }
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 1024px) {
     .header {
         display: flex;
+        justify-content: space-between;
+        height: 100%
     }
 
     .header hr {
         display: none;
     }
 
-    #title {
+    .title {
         order: 2;
-        font-size: 3em;
+        font-size: 1em;
     }
 
     .menuIcon {
         order: 1;
-        font-size: 1.5em;
+        font-size: 1em;
+        margin: auto 0;
     }
 
     .search {
         order: 3;
         width: 30%;
+        margin: auto 0;
+
     }
+
     .search input[type="text"] {
         border: 2px solid #333;
         border-radius: 3px;
@@ -563,19 +590,16 @@ a {
     }
 
     .shop {
-        grid-template-columns: repeat(3, 400px);
-    }
-
-    .details {
-        width: 400px;
-        height: 400px;
-        padding: 0;
+        grid-template-columns: repeat(3, 30%);
     }
 
     .item img {
-        height: 280px;
-        width: 250px;
+        width: 60%;
         align-items: center;
+    }
+
+    .text {
+        width: 65%;
     }
 
     .price-buy button h2 {
@@ -583,5 +607,7 @@ a {
         min-width: 80px;
     }
 
-
+    .signup button {
+        height: 6vh;
+    }
 }
