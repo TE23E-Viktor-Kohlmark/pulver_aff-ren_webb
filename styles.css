@@ -504,6 +504,7 @@ Button {
     .signup button {
         height: 3vh;
         min-width: 100px;
+        min-height: 30px;
         width: 6vw;
         font-size: 1.2em
     }
