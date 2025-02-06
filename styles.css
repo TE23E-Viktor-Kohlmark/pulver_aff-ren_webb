@@ -32,16 +32,12 @@ Button {
     background: none;
     border: none;
 }
-
-a {
-    text-decoration: none;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-
-.MainContainer {
-    width: 100%;
-    margin: 0 auto;
-}
 
 /* ================ Header ================ */
 
@@ -114,11 +110,11 @@ a {
     /* Position */
     grid-area: item3;
     color: #333;
-    font-size: 3em;
+    font-size: 4em;
     font-weight: 900;
 }
 
-.bi-list :hover {
+.bi-list:hover {
     color: var(--primary-white);
     cursor: pointer;
 }
@@ -147,6 +143,8 @@ a {
 .menu {
     display: none;
     justify-content: center;
+    background-color: #fff;
+
     background-color: var(--secoundary-grey);
 }
 
@@ -171,13 +169,12 @@ a {
 /* ================ Footer ================ */
 .footer {
     position: relative;
-    bottom: 0;
     background-color: var(--primary-red);
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    margin-top: auto;
 }
 
 .signup h2 {
@@ -220,6 +217,7 @@ a {
 
 /* ================ Shop ================ */
 
+
 .shop {
     display: grid;
     justify-content: center;
@@ -236,6 +234,20 @@ a {
 .item img {
     aspect-ratio: 1;
     width: 30%;
+}
+
+.popular-tag {
+    position: absolute;
+    background-color: var(--populer-yellow);
+    color: var(--primary-black);
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 5px;
+    width: 10%;
+    margin: 0.5em 0;
+    text-align: center;
+    min-width: 66px;
 }
 
 .details {
@@ -259,7 +271,6 @@ a {
     /* Dose not reach the top of the img and is under it buy a sizeble amount */
 }
 
-
 .price-buy p {
     font-size: var(--phone-product-price);
     color: var(--buy-white);
@@ -270,11 +281,9 @@ a {
     align-items: center;
     margin: 1em auto;
     width: 30%;
-    /* width: calc(74px - 51.91px/2px) calc(74px - 51.91px/2px);  */
 }
 
 .price-buy button {
-
     background-color: var(--buy-red);
     color: var(--primary-white);
     border: none;
@@ -325,7 +334,6 @@ a {
     font-size: 30px;
     cursor: pointer;
 }
-
 
 .cartItem img {
     width: 100px;
@@ -384,7 +392,6 @@ a {
     font-weight: bold;
     cursor: pointer;
     font-size: 20px;
-
 }
 
 .bi-plus-lg {
@@ -414,8 +421,6 @@ a {
     margin: 0.8em;
 }
 
-
-
 /* ================ Media Queries ================ */
 
 @media (min-width: 820px) {
@@ -423,11 +428,15 @@ a {
         font-size: 30px;
         margin: 0 40px;
     }
-
+    .cartIcon i {
+        font-size: 3em;
+    }
     .shop {
         grid-template-columns: repeat(2, 33%);
     }
-
+    .item {
+        min-height: 310px;
+    }
     .item img {
         min-width: 220px;
         width: 60%;
@@ -442,12 +451,9 @@ a {
     .text {
         display: flex;
         flex-direction: column;
-
         min-height: 60px;
-
         height: 7vh;
         width: 80%;
-
         margin-top: 1em;
     }
 
@@ -496,7 +502,7 @@ a {
     }
 
     .signup button {
-        height: 8vh;
+        height: 3vh;
         min-width: 100px;
         width: 6vw;
         font-size: 1.2em
@@ -507,7 +513,8 @@ a {
     .header {
         display: flex;
         justify-content: space-between;
-        height: 100%
+        height: 100%;
+        max-height: 100px;
     }
 
     .header hr {
@@ -517,11 +524,11 @@ a {
     .title {
         order: 2;
         font-size: 1em;
+        margin: auto 0;
     }
 
     .menuIcon {
         order: 1;
-        font-size: 1em;
         margin: auto 0;
     }
 
@@ -529,7 +536,6 @@ a {
         order: 3;
         width: 30%;
         margin: auto 0;
-
     }
 
     .search input[type="text"] {
@@ -563,11 +569,7 @@ a {
     }
 
     .price-buy button h2 {
-        font-size: 20px;
+        font-size: 1em;
         min-width: 80px;
-    }
-
-    .signup button {
-        height: 6vh;
     }
 }
