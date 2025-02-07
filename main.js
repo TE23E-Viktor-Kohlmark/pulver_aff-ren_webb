@@ -48,30 +48,8 @@ let shopItemsData = [
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
-// Main page
-function generateShop() {
-    shop.innerHTML = shopItemsData.map((x) => {
-        let search = basket.find((y) => y.id === x.id) || [];
-        return `
-            <div class="item">
-                ${x.popular ? '<div class="popular-tag">Popular</div>' : ''}
-                <div class="popular-tag">Popular</div>
-                <div class="details">
-                    <img src="${x.img}" alt="">
-                    <div class="text">
-                        <h3>${x.name}</h3>
-                        <div class="price-buy">
-                            <button onclick="increment('${x.id}')">Köp</button>
-                            <p>Pris: ${x.price}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }).join("");
-}
 
-generateShop();
+
 // ======== ======== Cart ======== ========
 
 let label = document.getElementById('label');
@@ -106,6 +84,34 @@ function displayShopItems(items) {
 
 // Call displayShopItems initially to display all items
 displayShopItems(shopItemsData);
+
+function generateCartItems() {
+    let cartItems = document.getElementById('cartItems');
+    if (basket.length !== 0) {
+        cartItems.innerHTML = basket.map((x) => {
+            let { id, item } = x;
+            let search = shopItemsData.find((y) => y.id === id) || [];
+            return `
+            <div class="cartItem">
+                <img src="${search.img}" alt="">
+                <div class="title">
+                    <div class="cartName">
+                        <h3>${search.name}</h3>
+                        <i onclick="removeItem('${id}')" class="bi bi-x-lg"></i>
+                    </div>    
+                    <div class="buttons">
+                        <i onclick="decrement('${id}')" class="bi bi-dash-lg"></i>
+                        <div id="${id}" class="amount">${item}</div>
+                        <i onclick="increment('${id}')" class="bi bi-plus-lg"></i>
+                    </div>
+                </div>
+            </div>
+            `;
+        }).join("");
+    } else {
+        cartItems.innerHTML = ""
+    }
+}
 
 // ======== ======== Functions ======== ========
 
@@ -150,8 +156,25 @@ function decrement(id) {
     if (selectedItem.item === 0) {
         basket = basket.filter((x) => x.id !== id);
     }
-
+    localStorage.setItem("data", JSON.stringify(basket));
     update(id);
+    
+}
+
+function removeItem(id) {
+    basket = basket.filter((x) => x.id !== id);
+    localStorage.setItem("data", JSON.stringify(basket));
+    update(id);
+}
+
+
+function calculation() {
+    let carticon = document.getElementById('cartAmount');
+    if (carticon) {
+        let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
+        carticon.innerHTML = totalItems;
+        localStorage.setItem("data", JSON.stringify(basket));
+    }
 }
 
 function update(id) {
@@ -165,22 +188,8 @@ function update(id) {
     generateCartItems();
 }
 
-function removeItem(id) {
-    basket = basket.filter((x) => x.id !== id);
-    localStorage.setItem("data", JSON.stringify(basket));
-    update(id);
-}
-
-function calculation() {
-    let carticon = document.getElementById('cartAmount');
-    if (carticon) {
-        let totalItems = basket.map((x) => x.item).reduce((x, y) => x + y, 0);
-        carticon.innerHTML = totalItems;
-        localStorage.setItem("data", JSON.stringify(basket));
-    }
-}
-
 update();
+
 // ========= Button =========
 function CartHide() {
     var x = document.getElementById("cart");
