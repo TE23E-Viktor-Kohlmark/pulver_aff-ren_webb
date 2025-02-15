@@ -48,14 +48,13 @@ let shopItemsData = [
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
-// Main page
+// ======== ======== Shop interface ======== ========
 function generateShop() {
     shop.innerHTML = shopItemsData.map((x) => {
         let search = basket.find((y) => y.id === x.id) || [];
         return `
             <div class="item">
                 ${x.popular ? '<div class="popular-tag">Popular</div>' : ''}
-                <div class="popular-tag">Popular</div>
                 <div class="details">
                     <img src="${x.img}" alt="">
                     <div class="text">
