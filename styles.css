@@ -366,6 +366,7 @@ font-size: 20px;
     cursor: pointer;
     margin-left: 10px;
 }
+
 .cartName i {
     font-size: 20px;
 }
@@ -412,7 +413,7 @@ font-size: 20px;
     width: 320px;
     padding: 5px 0;
     margin-top: 1em;
-}   
+}
 
 .totalPrice h3 {
     margin: 0.8em;
@@ -501,6 +502,7 @@ font-size: 20px;
     .signup button {
         height: 3vh;
         min-width: 100px;
+        min-height: 30px;
         width: 6vw;
         font-size: 1.2em
     }
