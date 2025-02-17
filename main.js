@@ -122,9 +122,9 @@ function totalPrice() {
             let product = shopItemsData.find((y) => y.id === item.id);
             return sum + (product.price * item.item);
         }, 0);
-        price.innerHTML = `<h3>Total Price: $${total.toFixed(2)}</h3>`;
+        price.innerHTML = `<h3>Total Price: ${total.toFixed(2)} kr</h3>`;
     } else {
-        price.innerHTML = `<h3>Total Price: $0.00</h3>`;
+        price.innerHTML = `<h3>Total Price: 0.00 kr</h3>`;
     }
 }
 
