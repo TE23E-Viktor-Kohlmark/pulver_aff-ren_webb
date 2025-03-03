@@ -70,7 +70,7 @@ function displayShopItems(items) {
                 <div class="details">
                     <img src="${x.img}" alt="">
                     <div class="text">
-                        <h3>${x.name}</h3>
+                        <h2>${x.name}</h2>
                         <div class="price-buy">
                             <button onclick="increment('${x.id}')">Köp</button>
                             <p>Pris: ${x.price}</p>
