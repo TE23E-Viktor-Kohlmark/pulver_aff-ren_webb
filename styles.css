@@ -49,7 +49,7 @@ Button {
     grid-template-areas:
         "title title title"
         "devider devider devider"
-        "item1 item2 item3";
+        "item1 item2 item3";       
 }
 
 .header hr {
@@ -453,6 +453,8 @@ font-size: 20px;
         height: 7vh;
         width: 80%;
         margin-top: 1em;
+        padding-bottom: 2em;
+
     }
 
     .text h3 {
@@ -562,9 +564,9 @@ font-size: 20px;
         width: 60%;
         align-items: center;
     }
-
     .text {
         width: 65%;
+        padding-bottom: 2em;
     }
 
     .price-buy button h2 {
